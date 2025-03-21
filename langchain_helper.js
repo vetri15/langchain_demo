@@ -77,7 +77,7 @@ export async function getResponseFromLangChain(youtube_url, question) {
 		temperature: 0,
 		maxRetries: 2,
 	});
-	const response = await llm.invoke(llm_query);
+	let response = await llm.invoke(llm_query);
 	// Don't forget to clean up the index 😉
 	pc.deleteIndex(indexName);
 	response = response.replace(/<think>[\s\S]*?<\/think>/g, "").trim();
